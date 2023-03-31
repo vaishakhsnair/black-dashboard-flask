@@ -6,6 +6,7 @@ Copyright (c) 2019 - present AppSeed.us
 from flask_migrate import Migrate
 from sys import exit
 from decouple import config
+from flask_cors import CORS
 
 from apps.config import config_dict
 from apps import create_app, db
@@ -33,4 +34,5 @@ if DEBUG:
     app.logger.info('DBMS        = ' + app_config.SQLALCHEMY_DATABASE_URI)
 
 if __name__ == "__main__":
+
     app.run()

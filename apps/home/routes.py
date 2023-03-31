@@ -4,10 +4,10 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from apps.home import blueprint
-from flask import render_template, request
+from flask import render_template, request,jsonify
 from flask_login import login_required
 from jinja2 import TemplateNotFound
-
+import requests
 
 @blueprint.route('/index')
 @login_required
@@ -18,6 +18,7 @@ def index():
 @blueprint.route('/<template>')
 @login_required
 def route_template(template):
+    
 
     try:
 
@@ -51,3 +52,17 @@ def get_segment(request):
 
     except:
         return None
+
+
+@blueprint.route("/api/<point>")
+def getvoltage(point):
+    if point == 'voltage':
+        num = 1
+    elif point == "charge":
+        num = 2
+    else :
+        return render_template('home/page-404.html'), 404
+
+    url  =f"https://thingspeak.com/channels/2084395/field/{num}.json?&amp;offset=0&amp"
+    re = requests.get(url).json()  
+    return jsonify(re)
