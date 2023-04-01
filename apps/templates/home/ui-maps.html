@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div class="row">
+<div class="row"> 
   <div class="col-md-12">
     <div class="card card-plain">
       <div class="card-header">
@@ -19,6 +19,12 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-3" style="align-self: flex-start;" id="st1">Station 1</div>
+  <div class="col-md-3" style="align-self:center ;" id="st2">Station 2</div>
+  <div class="col-md-3" style="align-self: flex-end;" id="st3">Station 3</div>
+  
+</div>
 
 {% endblock content %}
 
@@ -27,7 +33,7 @@
 
   <!--  Google Maps Plugin    -->
   <!-- Place this tag in your head or just before your close body tag. -->
-  <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+  <script src="https://maps.googleapis.com/maps/api/js"></script>
 
   <script>
     $(document).ready(function() {

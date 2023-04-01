@@ -1,0 +1,88 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Bookings {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header">
+        <h4 class="card-title"> Slot Booking</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  station
+                </th>
+                <th>
+                  location
+                </th>
+                <th>
+                  available slots
+                </th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  1
+                </td>
+                <td>
+                  Ernakulam
+                </td>
+                <td>
+                  8
+                </td>
+                <td>
+                 <a href="/api/bookings?station=1">book</a> 
+                </td>
+
+              </tr>
+              <tr>
+                <td>
+                 2
+                </td>
+                <td>
+                  Vytilla
+                </td>
+                <td>
+                 5
+                </td>
+                <td>
+                  <a href="/api/bookings?station=2">book</a> 
+                 </td>
+
+              </tr>
+              <tr>
+                <td>
+                  3
+                </td>
+                <td>
+                  Eroor
+                </td>
+                <td>
+                  2
+                </td>
+                <td>
+                  <a href="/api/bookings?station=3">book</a> 
+                 </td>
+           </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

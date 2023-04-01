@@ -54,14 +54,33 @@ def get_segment(request):
         return None
 
 
+
+
 @blueprint.route("/api/<point>")
 def getvoltage(point):
     if point == 'voltage':
         num = 1
     elif point == "charge":
         num = 2
+    elif point == 'bookings':
+        return render_template("home/bookings.html",segment="bookings")
     else :
-        return render_template('home/page-404.html'), 404
+        e = []
+        for i in (1,2):
+            g = []
+            f = requests.get(f"https://thingspeak.com/channels/2084395/field/{i}.json?&amp;offset=0&amp").json()
+            f = f["feeds"]
+            time = []
+            value = []
+            for j in f:
+                time.append(j['created_at'].split("T")[1].split("Z")[0])
+                value.append(float(j[f"field{i}"]))
+            g.append(time)
+            g.append(value)
+            e.append(g)
+        
+        return jsonify(e)
+
 
     url  =f"https://thingspeak.com/channels/2084395/field/{num}.json?&amp;offset=0&amp"
     re = requests.get(url).json()  
